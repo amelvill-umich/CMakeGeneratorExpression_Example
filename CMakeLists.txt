@@ -13,6 +13,8 @@ set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "Potatoes
 # So that means, look for a file named generated_values.txt in your build directory
 set(outputFilePath ${CMAKE_CURRENT_BINARY_DIR}/generated_values.txt)
 
+# The file will contain something like this: (I set my CMAKE_BUILD_TYPE to "Release")
+# CONFIG is 'Release', The generator expression resolves to 'release'
 set(expressionvalue "CONFIG is '$<CONFIG>', The generator expression resolves to '$<$<CONFIG:Debug>:debug>$<$<CONFIG:Release>:release>$<$<CONFIG:Potatoes>:tomatoes>'")
 
 file(GENERATE OUTPUT ${outputFilePath} CONTENT ${expressionvalue})
